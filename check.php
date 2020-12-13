@@ -21,9 +21,11 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) {
     ) {
         setcookie("id", "", time() - 3600 * 24 * 30 * 12, "/");
         setcookie("hash", "", time() - 3600 * 24 * 30 * 12, "/");
+
+
         echo "что-то не получилось";
     } else {
-        echo "Привет, " . $userdata['user_login'] . ". Всё работает!";
+        echo "Привет, " . $userdata['user_login'] . ". Вы успешно вошли на сайт!";
         echo "<br><a  href='index.php'>На главную</a>";
         echo "<br><a  href='index.php'>Личный кабинет</a>";
     }

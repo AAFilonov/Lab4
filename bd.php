@@ -6,4 +6,4 @@ if (mysqli_connect_errno()) {
     printf("Не удалось подключиться: %s\n", mysqli_connect_error());
     exit();
 }
-//  
+mysqli_report(MYSQLI_REPORT_ALL);

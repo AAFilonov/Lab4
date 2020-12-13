@@ -41,8 +41,8 @@ if (isset($_POST['submit'])) {
         mysqli_query($db, "UPDATE users SET user_hash='" . $hash . "' " . $insip . " WHERE user_id='" . $data['user_id'] . "'");
 
         # Ставим куки
-        setcookie("id", $data['user_id'], time() + 60 * 60 * 24 * 30);
-        setcookie("hash", $hash, time() + 60 * 60 * 24 * 30);
+        setcookie("id", $data['user_id'], time() + 60 * 60 * 24 * 30, "/");
+        setcookie("hash", $hash, time() + 60 * 60 * 24 * 30, "/");
 
         # Переадресовываем браузер на страницу проверки нашего скрипта
         header("Location: check.php");
@@ -52,9 +52,15 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+<h2>Авторизация</h2>
 <form method="POST">
-    Логин <input name="login" type="text"><br>
-    Пароль <input name="password" type="password"><br>
+
+    <label>Ваш логин:<br></label>
+    <input name="login" type="text" size="15" maxlength="15"><br>
+    <label>Ваш пароль:<br></label>
+    <input name="password" type="password" size="15" maxlength="15"><br>
     Не прикреплять к IP(не безопасно) <input type="checkbox" name="not_attach_ip"><br>
-    <input name="submit" type="submit" value="Войти">
+
+    <input name="submit" type="submit" value="Войти"><br>
+    <a href="send_pass.php">Забыли пароль?</a><br>
 </form>
